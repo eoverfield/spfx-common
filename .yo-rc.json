@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.7.1",
+    "libraryName": "eoverfield-spfx-common",
+    "libraryId": "56cf9307-837c-41ea-99f6-d93dad6a8fec",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

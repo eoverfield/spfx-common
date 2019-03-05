@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "eoverfield-spfx-common-tests",
+    "id": "56cf9307-837c-41ea-99f6-d93dad6a8fec",
+    "version": "0.2.1.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/eoverfield-spfx-common.sppkg"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "name": "@eoverfield/spfx-common",
+  "description": "Reusable blocks for SharePoint Framework solutions",
+  "version": "0.2.1",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "clean": "gulp clean",
+    "test": "gulp test",
+    "prepublishOnly": "gulp",
+    "versionUpdater": "gulp versionUpdater"
+  },
+  "dependencies": {
+    "@pnp/common": "1.2.9",
+    "@pnp/logging": "1.2.9",
+    "@pnp/odata": "1.2.9",
+    "@pnp/sp": "1.2.9",
+    "ts-md5": "1.2.4"
+  },
+  "resolutions": {
+    "@types/react": "16.4.2"
+  },
+  "devDependencies": {
+    "react": "16.3.2",
+    "react-dom": "16.3.2",
+    "@microsoft/sp-core-library": "1.7.1",
+    "@microsoft/sp-webpart-base": "1.7.1",
+    "@microsoft/sp-lodash-subset": "1.7.1",
+    "@microsoft/sp-office-ui-fabric-core": "1.7.1",
+    "@microsoft/sp-build-web": "1.7.1",
+    "@microsoft/sp-tslint-rules": "1.7.1",
+    "@microsoft/sp-module-interfaces": "1.7.1",
+    "@microsoft/sp-webpart-workbench": "1.7.1",
+    "gulp": "~3.9.1",
+    "@types/chai": "3.4.34",
+    "@types/mocha": "2.2.38",
+    "@types/react": "16.4.2",
+    "@types/react-dom": "16.0.5",
+    "@types/webpack-env": "1.13.1",
+    "@types/es6-promise": "0.0.33",
+    "ajv": "~5.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eoverfield/spfx-common"
+  },
+  "license": "MIT",
+  "keywords": [
+    "sharepoint",
+    "office365",
+    "tools",
+    "spfx",
+    "framework"
+  ],
+  "bugs": {
+    "url": "https://github.com/eoverfield/spfx-common/issues"
+  },
+  "main": "lib/index.js",
+  "homepage": "https://github.com/eoverfield/spfx-common/",
+  "contributors": [
+    "Overfield, Eric <>"
+  ]
+}
