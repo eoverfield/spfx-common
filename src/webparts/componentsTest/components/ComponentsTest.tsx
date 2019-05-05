@@ -50,6 +50,13 @@ export default class ComponentsTest extends React.Component<IComponentsTestProps
           />
         </div>
 
+        <div>
+          <DefaultButton
+            text={"Test setting user profile property data"}
+            onClick={() => {this.testSetUserProfile();}}
+          />
+        </div>
+
         {this.state.message && (
           <Label>
             {this.state.message}
@@ -131,7 +138,7 @@ export default class ComponentsTest extends React.Component<IComponentsTestProps
       let spUserProfileService = new SharePointUserProfileService();
 
       //set a custom storage key prefix if preferred
-      SharePointUserProfileService.useLocalStorage = true;
+      SharePointUserProfileService.useLocalStorage = false;
       SharePointUserProfileService.localStorageKeyPrefix = "UPSCustom";
       SharePointUserProfileService.localStorageKeyName = "ProfileCustom";
       SharePointUserProfileService.localStorageTimeout = 1;
@@ -152,6 +159,61 @@ export default class ComponentsTest extends React.Component<IComponentsTestProps
     }
     catch (err) {
       console.log("[testGetUserProfile]: an error occurred getting user profile");
+      console.log(err);
+    }
+
+  }
+
+
+  @autobind
+  private async testSetUserProfile(): Promise<void> {
+    //go and get results
+    try {
+      let spUserProfileService = new SharePointUserProfileService();
+
+      //set a custom storage key prefix if preferred
+      SharePointUserProfileService.useLocalStorage = true;
+      SharePointUserProfileService.localStorageKeyPrefix = "UPSCustom";
+      SharePointUserProfileService.localStorageKeyName = "ProfileCustom";
+      SharePointUserProfileService.localStorageTimeout = 1;
+
+      console.log("[testSetUserProfile]: set user profile.");
+
+      try {
+        await spUserProfileService.set("AboutMe", "somevalue");
+        console.log("[testSetUserProfile]: set user profile complete: AboutMe");
+      }
+      catch (err) {
+        console.log("an error occurred setting property: AboutMe");
+        console.log(err);
+      }
+
+      try {
+        await spUserProfileService.set("CellPhone", "555-555-5555");
+        console.log("[testSetUserProfile]: set user profile complete: CellPhone");
+      }
+      catch (err) {
+        console.log("an error occurred setting property: CellPhone");
+        console.log(err);
+      }
+
+      try {
+        await spUserProfileService.set("CellPhone2", "555-555-5555");
+        console.log("[testSetUserProfile]: set user profile complete: CellPhone2");
+      }
+      catch (err) {
+        console.log("an error occurred setting property: CellPhone2");
+        console.log(err);
+      }
+
+      console.log("[testSetUserProfile]: set user profile complete.");
+
+      this.setState({
+        message: "User profile set, check console log"
+      });
+    }
+    catch (err) {
+      console.log("[testSetUserProfile]: an error occurred setting user profile");
       console.log(err);
     }
 

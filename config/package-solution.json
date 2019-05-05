@@ -3,7 +3,7 @@
   "solution": {
     "name": "eoverfield-spfx-common-tests",
     "id": "56cf9307-837c-41ea-99f6-d93dad6a8fec",
-    "version": "0.2.2.0",
+    "version": "0.3.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true
   },

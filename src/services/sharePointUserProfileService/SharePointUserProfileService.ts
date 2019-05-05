@@ -1,4 +1,5 @@
 import { sp } from '@pnp/sp';
+import { CurrentUser } from '@pnp/sp/src/siteusers';
 
 import {
   ILocalStorageService,
@@ -120,6 +121,81 @@ export class SharePointUserProfileService {
           reject();
         }
 
+      });
+
+      return p;
+    }
+
+
+
+    /**
+     * Attempt to set a user profile property
+     * @param key the user profile property key to update
+     * @param value the value of the key to store
+     * @return void - rejects if unsuccessful
+     */
+    public async set(key: string, value: string): Promise<void> {
+
+      var p = new Promise<void>(async (resolve, reject) => {
+
+        //key is required
+        if (!key) {
+          reject("key required");
+        }
+        //value should at least be an empty string
+        if (!value) {
+          value = "";
+        }
+
+
+        try {
+          //get the current user to get their account name
+          let currentUser: CurrentUser;
+
+          try {
+            currentUser = await sp.web.currentUser.get();
+          }
+          catch (err) {
+            reject(err);
+            return;
+          }
+
+          //verify we do in fact have a valid user
+          if (!currentUser) {
+            reject("unable to retrieve current user");
+            return;
+          }
+
+          //current user must be available, update the user profile property
+          try {
+            await sp.profiles.setSingleValueProfileProperty(currentUser["LoginName"], key, value);
+          }
+          catch (err) {
+            reject(err);
+            return;
+          }
+
+          //if local storage used, clear currently stored properties
+          if (SharePointUserProfileService.useLocalStorage) {
+            let localStorageService: ILocalStorageService = new LocalStorageService();
+
+            //set up local storage object to attempt to clear
+            let localStorageKeyValue: ILocalStorageKey = {
+              keyName: SharePointUserProfileService.localStorageKeyName,
+              keyPrefix: SharePointUserProfileService.localStorageKeyPrefix,
+              keyValue: ""
+            } as ILocalStorageKey;
+
+            //store to local storage
+            await localStorageService.set(localStorageKeyValue);
+          }
+
+          //if we are here, successfully set user profile property and cleared local storage is required
+          resolve();
+        }
+        catch (err) {
+          reject(err);
+        }
       });
 
       return p;
