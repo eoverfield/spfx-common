@@ -2,7 +2,7 @@
 Component inspired by https://github.com/n8design/panthema - Stefan Bauer
 */
 import * as React from 'react';
-import * as lodash from "lodash";
+import * as lodash from "lodash/core";
 
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
