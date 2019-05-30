@@ -13,6 +13,8 @@ import { ILocalStorageService, ILocalStorageKey, LocalStorageService } from '../
 
 import { SharePointUserProfileService } from '../../../SharePointUserProfileService';
 
+import { ThemeGrid } from '../../../ThemeGrid';
+
 export default class ComponentsTest extends React.Component<IComponentsTestProps, IComponentsTestState> {
   private localStorageKeyPrefix: string = "TESTLS";
   private localStrorageKeyName: string = "TestKeyName";
@@ -27,8 +29,13 @@ export default class ComponentsTest extends React.Component<IComponentsTestProps
   }
 
   public render(): React.ReactElement<IComponentsTestProps> {
+    //load up the theme grid
+    //var element = React.createElement(ThemeGrid, {});
+
     return (
       <div className={ styles.componentsTest }>
+        <ThemeGrid />
+
         <div>
           <DefaultButton
             text={"Test setting local storage data"}

@@ -1,7 +1,7 @@
 {
   "name": "@eoverfield/spfx-common",
   "description": "Reusable blocks for SharePoint Framework solutions",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "engines": {
     "node": ">=0.10.0"
   },
@@ -17,7 +17,9 @@
     "@pnp/logging": "1.2.9",
     "@pnp/odata": "1.2.9",
     "@pnp/sp": "1.2.9",
-    "ts-md5": "1.2.4"
+    "ts-md5": "1.2.4",
+    "lodash": "1.0.1",
+    "spfx-uifabric-themes": "0.6.0"
   },
   "resolutions": {
     "@types/react": "16.4.2"
