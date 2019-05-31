@@ -27,6 +27,11 @@ gulp package-solution - TODO
 
 
 ### Publishing
+gulp clean
+gulp build
+gulp bundle --ship
+gulp package-solution --ship
+
 npm login
 
 npm publish --access=public

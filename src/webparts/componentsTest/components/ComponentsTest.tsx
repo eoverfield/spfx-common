@@ -15,6 +15,8 @@ import { SharePointUserProfileService } from '../../../SharePointUserProfileServ
 
 import { ThemeGrid } from '../../../ThemeGrid';
 
+import { DomHelpers } from '../../../Helpers';
+
 export default class ComponentsTest extends React.Component<IComponentsTestProps, IComponentsTestState> {
   private localStorageKeyPrefix: string = "TESTLS";
   private localStrorageKeyName: string = "TestKeyName";
@@ -26,6 +28,12 @@ export default class ComponentsTest extends React.Component<IComponentsTestProps
     this.state = {
       message: ""
     };
+
+    //Review console and network for vreification of file loading
+    console.log("DOMHelpers: Review console and network for vreification of file loading");
+
+    DomHelpers.includeCss("https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css");
+    DomHelpers.includeScript("https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js");
   }
 
   public render(): React.ReactElement<IComponentsTestProps> {
