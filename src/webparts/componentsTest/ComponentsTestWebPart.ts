@@ -21,6 +21,7 @@ export default class ComponentsTestWebPart extends BaseClientSideWebPart<ICompon
     const element: React.ReactElement<IComponentsTestProps > = React.createElement(
       ComponentsTest,
       {
+        context: this.context
       }
     );
 

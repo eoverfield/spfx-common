@@ -13,6 +13,8 @@ import { ILocalStorageService, ILocalStorageKey, LocalStorageService } from '../
 
 import { SharePointUserProfileService } from '../../../SharePointUserProfileService';
 
+import { TenantPropertiesService, ITenantProperty } from '../../../TenantPropertiesService';
+
 import { ThemeGrid } from '../../../ThemeGrid';
 
 import { DomHelpers } from '../../../Helpers';
@@ -69,6 +71,13 @@ export default class ComponentsTest extends React.Component<IComponentsTestProps
           <DefaultButton
             text={"Test setting user profile property data"}
             onClick={() => {this.testSetUserProfile();}}
+          />
+        </div>
+
+        <div>
+          <DefaultButton
+            text={"Test getting tenant property"}
+            onClick={() => {this.testGetTenantProperty();}}
           />
         </div>
 
@@ -229,6 +238,30 @@ export default class ComponentsTest extends React.Component<IComponentsTestProps
     }
     catch (err) {
       console.log("[testSetUserProfile]: an error occurred setting user profile");
+      console.log(err);
+    }
+
+  }
+
+
+  @autobind
+  private async testGetTenantProperty(): Promise<void> {
+    //go and get tenant property
+    try {
+      //global initialize tenant properties service
+      await TenantPropertiesService.Init(this.props.context);
+
+      let tenantProperty: ITenantProperty = await TenantPropertiesService.get("customProperty");
+
+      console.log("[testGetTenantProperty]: get tenant property");
+      console.log(tenantProperty);
+
+      this.setState({
+        message: "Tenant property, check console log"
+      });
+    }
+    catch (err) {
+      console.log("[testGetTenantProperty]: an error occurred getting Tenant property");
       console.log(err);
     }
 
