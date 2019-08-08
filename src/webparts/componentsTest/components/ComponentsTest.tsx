@@ -93,7 +93,9 @@ export default class ComponentsTest extends React.Component<IComponentsTestProps
 
   @autobind
   private async testSetLocalStorage(): Promise<void> {
-    let localStorageService: ILocalStorageService = new LocalStorageService();
+    let localStorageService: ILocalStorageService = new LocalStorageService({
+      enableLog: true
+    });
 
     const storedData: any = {
       testString: (new Date(Date.now())).toString(),
@@ -127,7 +129,9 @@ export default class ComponentsTest extends React.Component<IComponentsTestProps
 
   @autobind
   private async testGetLocalStorage(): Promise<void> {
-    let localStorageService: ILocalStorageService = new LocalStorageService();
+    let localStorageService: ILocalStorageService = new LocalStorageService({
+      enableLog: true
+    });
 
     //set up local storage object to attempt to get data
     let localStorageKeyValue: ILocalStorageKey = {
@@ -159,13 +163,14 @@ export default class ComponentsTest extends React.Component<IComponentsTestProps
   private async testGetUserProfile(): Promise<void> {
     //go and get results
     try {
-      let spUserProfileService = new SharePointUserProfileService();
-
       //set a custom storage key prefix if preferred
-      SharePointUserProfileService.useLocalStorage = false;
-      SharePointUserProfileService.localStorageKeyPrefix = "UPSCustom";
-      SharePointUserProfileService.localStorageKeyName = "ProfileCustom";
-      SharePointUserProfileService.localStorageTimeout = 1;
+      let spUserProfileService = new SharePointUserProfileService({
+        useLocalStorage: false,
+        localStorageKeyPrefix: "UPSCustom",
+        localStorageKeyName: "ProfileCustom",
+        localStorageTimeout: 1,
+        enableLog: true
+      });
 
       let userProfile: any = await spUserProfileService.get();
 
@@ -193,13 +198,14 @@ export default class ComponentsTest extends React.Component<IComponentsTestProps
   private async testSetUserProfile(): Promise<void> {
     //go and get results
     try {
-      let spUserProfileService = new SharePointUserProfileService();
-
       //set a custom storage key prefix if preferred
-      SharePointUserProfileService.useLocalStorage = true;
-      SharePointUserProfileService.localStorageKeyPrefix = "UPSCustom";
-      SharePointUserProfileService.localStorageKeyName = "ProfileCustom";
-      SharePointUserProfileService.localStorageTimeout = 1;
+      let spUserProfileService = new SharePointUserProfileService({
+        useLocalStorage: false,
+        localStorageKeyPrefix: "UPSCustom",
+        localStorageKeyName: "ProfileCustom",
+        localStorageTimeout: 1,
+        enableLog: true
+      });
 
       console.log("[testSetUserProfile]: set user profile.");
 
@@ -249,11 +255,16 @@ export default class ComponentsTest extends React.Component<IComponentsTestProps
     //go and get tenant property
     try {
       //global initialize tenant properties service
-      await TenantPropertiesService.Init(this.props.context);
+      await TenantPropertiesService.init(this.props.context);
 
-      let tenantProperty: ITenantProperty = await TenantPropertiesService.get("customProperty");
+      let tenantPropertiesService: TenantPropertiesService = new TenantPropertiesService({
+        useLocalStorage: true,
+        enableLog: true
+      });
 
-      console.log("[testGetTenantProperty]: get tenant property");
+      let tenantProperty: ITenantProperty = await tenantPropertiesService.get("customProperty");
+
+      console.log("[testGetTenantProperty]: got tenant property");
       console.log(tenantProperty);
 
       this.setState({

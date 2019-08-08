@@ -1,3 +1,11 @@
+export interface ILocalStorageServiceProperties {
+  /*
+  Enable console logging or not
+  */
+  enableLog?: boolean;
+}
+
+
 export interface ILocalStorageKey {
   /*
   The object used to create the key, could be anything. If Object, will be strigified. If not string, converted to string
