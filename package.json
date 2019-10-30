@@ -20,7 +20,7 @@
     "@pnp/odata": "1.2.9",
     "@pnp/sp": "1.2.9",
     "ts-md5": "1.2.4",
-    "lodash": "4.17.11",
+    "lodash": "4.17.13",
     "spfx-uifabric-themes": "0.6.0"
   },
   "resolutions": {
