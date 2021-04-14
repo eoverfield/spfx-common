@@ -3,7 +3,6 @@ import { escape } from '@microsoft/sp-lodash-subset';
 
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 import styles from './ComponentsTest.module.scss';
 
@@ -31,7 +30,7 @@ export default class ComponentsTest extends React.Component<IComponentsTestProps
       message: ""
     };
 
-    //Review console and network for vreification of file loading
+    //Review console and network for verification of file loading
     console.log("DOMHelpers: Review console and network for vreification of file loading");
 
     DomHelpers.includeCss("https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css");
@@ -44,8 +43,6 @@ export default class ComponentsTest extends React.Component<IComponentsTestProps
 
     return (
       <div className={ styles.componentsTest }>
-        <ThemeGrid />
-
         <div>
           <DefaultButton
             text={"Test setting local storage data"}
@@ -87,12 +84,13 @@ export default class ComponentsTest extends React.Component<IComponentsTestProps
           </Label>
         )}
 
+        <ThemeGrid />
+
       </div>
     );
   }
 
-  @autobind
-  private async testSetLocalStorage(): Promise<void> {
+  private testSetLocalStorage = async (): Promise<void> => {
     let localStorageService: ILocalStorageService = new LocalStorageService({
       enableLog: true
     });
@@ -127,8 +125,7 @@ export default class ComponentsTest extends React.Component<IComponentsTestProps
 
   }
 
-  @autobind
-  private async testGetLocalStorage(): Promise<void> {
+  private testGetLocalStorage = async (): Promise<void> => {
     let localStorageService: ILocalStorageService = new LocalStorageService({
       enableLog: true
     });
@@ -159,8 +156,10 @@ export default class ComponentsTest extends React.Component<IComponentsTestProps
 
   }
 
-  @autobind
-  private async testGetUserProfile(): Promise<void> {
+  private testGetUserProfile = async (): Promise<void> => {
+    // ensure that the user profile service will use the correct local site
+    await SharePointUserProfileService.init(this.props.context);
+
     //go and get results
     try {
       //set a custom storage key prefix if preferred
@@ -193,9 +192,10 @@ export default class ComponentsTest extends React.Component<IComponentsTestProps
 
   }
 
+  private testSetUserProfile = async (): Promise<void> => {
+    // ensure that the user profile service will use the correct local site
+    await SharePointUserProfileService.init(this.props.context);
 
-  @autobind
-  private async testSetUserProfile(): Promise<void> {
     //go and get results
     try {
       //set a custom storage key prefix if preferred
@@ -250,8 +250,7 @@ export default class ComponentsTest extends React.Component<IComponentsTestProps
   }
 
 
-  @autobind
-  private async testGetTenantProperty(): Promise<void> {
+  private testGetTenantProperty = async (): Promise<void> => {
     //go and get tenant property
     try {
       //global initialize tenant properties service

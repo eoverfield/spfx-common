@@ -3,9 +3,16 @@
   "solution": {
     "name": "eoverfield-spfx-common-tests",
     "id": "56cf9307-837c-41ea-99f6-d93dad6a8fec",
-    "version": "0.7.0.0",
+    "version": "0.8.0.0",
     "includeClientSideAssets": true,
-    "skipFeatureDeployment": true
+    "skipFeatureDeployment": true,
+    "developer": {
+      "name": "Eric Overfield",
+      "privacyUrl": "",
+      "termsOfUseUrl": "https://github.com/eoverfield/spfx-common/blob/master/LICENSE",
+      "websiteUrl": "https://github.com/eoverfield/spfx-common",
+      "mpnId": "000000"
+    }
   },
   "paths": {
     "zippedPackage": "solution/eoverfield-spfx-common.sppkg"

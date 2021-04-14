@@ -338,6 +338,7 @@ export class ThemeGrid extends React.Component<IThemeGridProps, IThemeGridState>
         (color, index, self) => {
           //console.log(color);
           return self.indexOf(color) === index
+            && color.indexOf
             && color.indexOf('ms-font') === -1
             && color.indexOf('none') === -1;
         }

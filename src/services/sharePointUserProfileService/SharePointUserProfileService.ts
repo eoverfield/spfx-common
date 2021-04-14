@@ -1,6 +1,6 @@
 import { WebPartContext } from                  '@microsoft/sp-webpart-base';
 import { ApplicationCustomizerContext } from    '@microsoft/sp-application-base';
-import { sp } from                              '@pnp/sp';
+import { sp } from                         '@pnp/sp';
 import { CurrentUser } from                     '@pnp/sp/src/siteusers';
 
 import {
